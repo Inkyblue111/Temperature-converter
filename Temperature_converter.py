@@ -35,7 +35,7 @@ class TemperatureConverter:
             return "Put in a number"    
 
 class ConverterGUI:
-    '''Sets up the GUI'''
+    ''' Sets up the GUI '''
     
     def __init__(self, root):
         
@@ -43,6 +43,7 @@ class ConverterGUI:
         
         # Main window
         self.root = root
+        self.root.title("Temperature Converter")
         self.root.geometry("400x150")
         
         # Container for frames
@@ -51,3 +52,39 @@ class ConverterGUI:
         
         # Dictionary to hold frames
         # Key is the frame name and value is the method that creates the frame
+        self.frames = {}
+        
+        self.frames["MainFrame"] = self.create_main_frame()
+        self.frames["to_cFrame"] = self.create_c_frame()
+        self.frames["to_fFrame"] = self.create_f_frame()
+        
+        # Show the inital frame
+        self.show("MainFrame")
+    
+    def show_frame(self, name):
+        ''' Displays the required fram from the dictionary '''
+        frame = self.frames[name]
+        frame.tkraise() # Move the frame to the top of the stack
+    
+    def create_main_frame(self):
+        frame = Frame(self.container)
+        frame.grid(row=0, column=0, sticky="nsew")
+        # When working with stacked frames, it is better to use .grid than .pack sticky stretches the frame to fill up the window space
+        # so the other frames can be covered, especially the ones that are larger than the current frame
+        
+        # Main heading
+        Label(frame, font=FONT_MAIN_TITLE, text="Temperature Converter").grid(row=0, columnspan=2, padx=10, pady=10, sticky="nsew")
+        
+        # Buttons: to Centigrade and to Fahrenheit
+        Button(frame, text="to Centigrade", bg="yellow", font=FONT_HEADING, command=lambda: 
+               self.show_frame("to_cFrame")).grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
+        Button(frame, text="to Fahrenheit", bg="pink", font=FONT_HEADING, command=lambda: 
+               self.show_frame("to_fFrame")).grid(row=1, column=1, padx=10, pady=10, sticky="nsew")    
+        return frame
+    
+    def create_c_frame(self):
+        pass
+    
+    def create_f_frame(self):
+        pass
+

@@ -83,8 +83,25 @@ class ConverterGUI:
         return frame
     
     def create_c_frame(self):
+        ''' Create the fahrenheit to centigrade screen '''
         pass
     
+    def to_centigrade(self):
+        ''' Calls the TempConverter object and displays the result in the app '''
+        result = self.convert.calulate_to_c(self.temp_entry_c.get())
+        self.result_c_label.configure(text=result)
+    
     def create_f_frame(self):
+        ''' Create the centigrade to fahrenheit screen '''
         pass
+    
+    def to_fahrenheit(self):
+        ''' Calls the TempConverter object and displays the result in the app '''
+        result = self.convert.calulate_to_f(self.temp_entry_f.get())
+        self.result_f_label.configure(text=result)
+    
+    def reset(self, entry, label):
+        ''' reset entry box and result label to blank '''
+        entry.delete(0,END)
+        Label.configure(text="")
 

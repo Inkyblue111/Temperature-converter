@@ -84,7 +84,14 @@ class ConverterGUI:
     
     def create_c_frame(self):
         ''' Create the fahrenheit to centigrade screen '''
-        pass
+        button_calculate = Button(root, text = "Calculate", width = 10, command = calculate_to_c)
+        button_calculate.grid(row=2, column=0, padx=10, pady=10, sticky="nsew")
+        
+        button_back = Button(root, text = "Back", width = 10, command = create_main_frame)
+        button_back.grid(row=2, column=1, padx=10, pady=10, sticky="nsew")
+        
+        button_reset = Button(root, text = "Reset", width = 10, command = reset)
+        button_reset.grid(row=2, column=2, padx=10, pady=10, sticky="nsew")        
     
     def to_centigrade(self):
         ''' Calls the TempConverter object and displays the result in the app '''
@@ -93,7 +100,14 @@ class ConverterGUI:
     
     def create_f_frame(self):
         ''' Create the centigrade to fahrenheit screen '''
-        pass
+        button_calculate = Button(root, text = "Calculate", width = 10, command = calculate_to_f)
+        button_calculate.grid(row=2, column=0, padx=10, pady=10, sticky="nsew")
+        
+        button_back = Button(root, text = "Back", width = 10, command = create_main_frame)
+        button_back.grid(row=2, column=1, padx=10, pady=10, sticky="nsew")
+        
+        button_reset = Button(root, text = "Reset", width = 10, command = reset)
+        button_reset.grid(row=2, column=2, padx=10, pady=10, sticky="nsew")   
     
     def to_fahrenheit(self):
         ''' Calls the TempConverter object and displays the result in the app '''
@@ -105,3 +119,6 @@ class ConverterGUI:
         entry.delete(0,END)
         Label.configure(text="")
 
+root = Tk()
+app = ConverterGUI(root)
+root.mainloop()
